@@ -1,5 +1,21 @@
 <script setup>
 import AppCard from './components/AppCard.vue';
+import { ref } from "vue";
+const cards = ref([ 
+      {
+        id: 1,
+        title: 'test1',
+        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab aut odit',
+        complited: false,
+    },
+    {
+        id: 2,
+        title: 'test2',
+        description: 'description_2',
+        complited: true,
+
+    }
+]);
 </script>
 
 <template>
@@ -8,8 +24,11 @@ import AppCard from './components/AppCard.vue';
   </header>
   <main>
     <div class="container">
-     <ul>
-      <AppCard/>
+     <ul v-for="(card, index) in  cards" :key="card.id">
+      <AppCard :card="card"
+                :index="index"
+                :key="card.id"
+        />
      </ul>
     </div>
    
