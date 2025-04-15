@@ -1,26 +1,8 @@
-<script setup>
-import AppCard from './components/AppCard.vue';
-import { ref } from "vue";
-const cards = ref([ 
-      {
-        id: 1,
-        title: 'test1',
-        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab aut odit',
-        complited: false,
-    },
-    {
-        id: 2,
-        title: 'test2',
-        description: 'description_2',
-        complited: true,
 
-    }
-]);
-</script>
 
 <template>
   <header>
-<h1 class="title">To do list</h1>
+<h1 class="title">Cписок курсов</h1>
   </header>
   <main>
     <div class="container">
@@ -34,6 +16,26 @@ const cards = ref([
    
   </main>
 </template>
+<script setup>
+import AppCard from './components/AppCard.vue';
+import { ref } from "vue";
+const cards = ref([ 
+      {
+        id: 1,
+        title: 'Система контроля версий Git',
+        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab aut odit',
+        coursLleght:"3 мес",
+        isActive: false,
+    },
+    {
+        id: 2,
+        title: 'React.js',
+        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab aut odit',
+        coursLleght:"2 мес",
+        isActive: true,
+    }
+]);
+</script>
 
 <style scoped>
 @import './assets/base.css';

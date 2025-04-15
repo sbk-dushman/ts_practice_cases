@@ -5,15 +5,25 @@
     <span class="card__status">статус</span>
   
   </li> -->
-  <li class="card" :key>
+  
+  <li v-if="card.isActive" class="card" :key>
+    
     <h3 class="card__title">{{ card.title }}</h3>
-    <p class="card_description">{{card.description}}</p>
+    <p class="card__description">{{card.description}}</p>
 
-    <span class="card__status"
+    <span class="curs__time">{{ card.coursLleght}}</span>
+  </li>
+  <li v-if="!card.isActive" class="card" :class="{'desablet':!card.isActive}">
+    
+    <h3 class="card__title">{{ card.title }}</h3>
+    <p class="card__description">{{card.description}}</p>
+
+    <span class="curs__time"
     :class="{ '--done': card.complited, '--in-progres':!card.complited, }"
     >{{ card.complited? 'done' : "in progress"}}</span>
   
   </li>
+
 </template>
 <script setup>
 const props = defineProps({card:Object,index:Number})
@@ -32,7 +42,10 @@ const props = defineProps({card:Object,index:Number})
   font-weight: 800;
   padding: 10px;
 }
-.card__status{
+.curs__time{
+  font-weight: 800;
+}
+/* .card__status{
   border-radius:20px;
   padding: 4px;
   color: var(--black);
@@ -40,14 +53,17 @@ const props = defineProps({card:Object,index:Number})
   margin: 10px;
   border:  1px solid var(--black);
 
-}
-.card_description{
+} */
+.card__description{
   padding: 20px;
 }
-.--in-progres{
-  background-color:var(--in-progres);
+ .--in-progres{
+  color: var(--in-progres);
 }
-.--done{
+.desablet{
+  
+}
+/* .--done{
   background-color:var(--done);
-}
+}  */
 </style>
