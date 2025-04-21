@@ -15,13 +15,7 @@
   </li>
   <li v-if="!card.isActive" class="card" :class="{'desablet':!card.isActive}">
     
-    <h3 class="card__title">{{ card.title }}</h3>
-    <p class="card__description">{{card.description}}</p>
-
-    <span class="curs__time"
-    :class="{ '--done': card.complited, '--in-progres':!card.complited, }"
-    >{{ card.complited? 'done' : "in progress"}}</span>
-  
+    <p class="card__description">Кажется, курс уже не существует…»</p>
   </li>
 
 </template>
@@ -61,7 +55,8 @@ const props = defineProps({card:Object,index:Number})
   color: var(--in-progres);
 }
 .desablet{
-  
+opacity: 0.5;
+color: var(--in-progres);
 }
 /* .--done{
   background-color:var(--done);
