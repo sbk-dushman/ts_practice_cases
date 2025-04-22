@@ -5,6 +5,7 @@
   --black:#000;
   --in-progres:#f56f68f2;
   --done:#1bd727;
+  --modal-bg:#373535a6;
   /* --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
 
@@ -52,4 +53,4 @@ ul{
   width: 100%;
   display: flex;
   justify-content: center;
-  }
+}
