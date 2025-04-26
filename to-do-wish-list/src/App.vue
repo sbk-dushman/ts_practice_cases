@@ -1,23 +1,34 @@
+<!-- /* todo 
+  
+фронт 
+закрыть цвет и размер кнопок 
+кнопка закрытия 
+ вынос в отдельный компонент 
+и тд
 
+*/ -->
 
 <template>
       <div class="modal__container">
       <div class="modal">
-      <h3>редактирование курса </h3>
-      <form action="">
-        <label for="form__name">
-          Название курса:
-          <input id="form__name" type="text">
+      <h3 class="modal__title">Редактирование курса </h3>
+      <form class="form" action="">
+
+        <label  for="form__name">
+         <span class="input-title" >Название курса:</span>
+          <input  id="form__name" class="form__name" type="text">
         </label>
+
         <label for="form__description">
-          Описание курса:
-          <input id="form__description" type="text">
+          <span class="input-title">Описание курса:</span>
+          <input id="form__description" class="form__description" type="text">
         </label>
+        
         <div class="form__btn-group">
           <button type="submit">сохранить</button>
           <button>Отмена</button>
         </div>
-     
+
         </form>
       </div>
     </div>
@@ -60,6 +71,11 @@ const cards = ref([
 
 <style scoped>
 @import './assets/base.css';
+.modal__title{
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 900;
+}
  .modal__container{
   background-color:var(--modal-bg);
   position: fixed;
@@ -72,11 +88,28 @@ const cards = ref([
  }
  .modal{
   background-color:var(--white);
-  width:400px;
-  height: 400px;
+  width:365px;
+  height: 270px;
   display: flex;
   flex-direction: column;
   padding: 20px;
-
+  padding-top: 42px;
  }
+ .form{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+ }
+ .input-title{
+  display: block;
+ }
+ .form__name,.form__description{
+  height: 15px;
+ }
+ .form__btn-group{
+  margin-top: 40px;
+ }
+
 </style>
