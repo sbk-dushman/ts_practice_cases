@@ -4,7 +4,7 @@
   --white:#ffff;
   --black:#000;
   --in-progres:#f56f68f2;
-  --done:#1bd727;
+  --done:#6aff74;
   --modal-bg:#373535a6;
   /* --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -44,6 +44,9 @@ body,html {
 }
 ul{
   list-style-type:none ;
+}
+button{
+  cursor: pointer;
 }
 .title{
   width: 100%;
