@@ -1,18 +1,7 @@
-<!-- /* todo 
-  
-+фронт 
-+закрыть цвет и размер кнопок 
-+кнопка закрытия 
- вынос в отдельный компонент 
-обработка кликов
-стейт
-
-*/ -->
-
 <template>
-      <div class="modal__container">
+    <div class="modal__container">
       <div class="modal">
-        <button class="modal__close-btn">&#10006;</button>
+        <button @click="close()" class="modal__close-btn">&#10006;</button>
       <h3 class="modal__title">Редактирование курса </h3>
       <form class="form" action="">
 
@@ -34,46 +23,16 @@
         </form>
       </div>
     </div>
-  <header>
-<h1 class="title">Cписок курсов</h1>
-  </header>
-  <main>
-
-    <div class="container">
-     <ul v-for="(card, index) in  cards" :key="card.id">
-      <AppCard :card="card"
-                :index="index"
-                :key="card.id"
-        />
-     </ul>
-    </div>
-   
-  </main>
 </template>
 <script setup>
-import AppCard from './components/AppCard.vue';
-import { ref } from "vue";
-const cards = ref([ 
-      {
-        id: 1,
-        title: 'Система контроля версий Git',
-        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab aut odit',
-        coursLleght:"3 мес",
-        isActive: false,
-    },
-    {
-        id: 2,
-        title: 'React.js',
-        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab aut odit',
-        coursLleght:"2 мес",
-        isActive: true,
-    }
-]);
-</script>
+const props = defineProps({card:Object,index:Number})
+function close() {
+  alert('a');
+}
 
+</script>
 <style scoped>
-@import './assets/base.css';
-.modal__title{
+  .modal__title{
   text-align: center;
   margin-bottom: 26px;
   font-weight: 900;
