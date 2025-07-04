@@ -5,14 +5,12 @@ defineProps<{
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vite.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
-  </div>
+   <form action="" class="task-form">
+    <input type="text" class="task-form__input-task">
+        <input type="text" class="task-form__input-priority">
+        <input type="text" class="task-form__input-time">
+        <button class="task-form__btn">сохранить</button>
+   </form>
 </template>
 
 <style scoped>
