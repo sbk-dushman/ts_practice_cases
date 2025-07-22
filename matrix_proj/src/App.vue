@@ -10,18 +10,26 @@ import AppMatrix from './components/AppMatrix.vue';
   </header>
 
   <main>
-      <div class="wrapper">
-      <AppForm msg="You did it!" />
-    </div>
-   <div class="matrix-container">
-  <AppMatrix msg="You did it!" />
-</div>
+     <AppForm msg="You did it!" />
+      <AppMatrix msg="You did it!" />
+      <!-- <div class="wrapper"> -->
+
+    <!-- </div> -->
+
+
   </main>
 </template>
 
-<style scoped>
+<style >
 :root{
 
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+ul{
+  list-style-type: none;
 }
 header {
   line-height: 1.5;
@@ -29,17 +37,13 @@ header {
 
 
 @media (min-width: 1024px) {
-  header {
+  /* header {
     display: flex;
     place-items: center;
-  }
+  } */
 
   .logo {
     margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-
   }
 
 }

@@ -43,6 +43,7 @@ h3 {
   align-items:center;
   flex-direction: column;
    text-transform: uppercase;
+   margin-top:40px;
 }
 [class^="task-form__input"]{
 margin-bottom: 10px;
