@@ -1,36 +1,48 @@
-<script setup lang="ts">
-defineProps<{
-  msg: string
-}>()
-</script>
 
 <template>
-   <form action="" class="task-form">
-    <h1 class="task-form__title">Новая задача </h1>
-    <input placeholder="task" type="text" class="task-form__input-task">
+   <form action@submit="addTask()" class="task-form">
+    <h1 class="task-form__title">Новая задача {{title}} </h1>
+    <input v-model="title" placeholder="task" type="text" class="task-form__input-task">
 
         <div class="task-form__priority-time">
-              <label for="task-form__input-time">  время
-        <select class="task-form__input-time" name="" id="task-form__input-time">
-          <option value="">10мин</option>
-          <option value="">25мин</option>
-          <option value="">1ч</option>
-          <option value="">2ч</option>
+              <label for="task-form__input-time">  время {{time}}
+        <select v-model="time" class="task-form__input-time"  name="" id="task-form__input-time">
+          <option selected value=10>10мин</option>
+          <option value=25>25мин</option>
+          <option value=60>1ч</option>
+          <option value=120>2ч</option>
         </select>
             </label>
-          <label for="task-form__input-priority"> Группа
-            <select class="task-form__input-priority" name="" id="task-form__input-priority">
-                <option value="">a</option>
-                <option value="">b</option>
-                <option value="">c</option>
+          <label for="task-form__input-priority"> Группа {{ priority }}
+            <select v-model="priority" class="task-form__input-priority" name="" id="task-form__input-priority">
+                <option selected value=1>a</option>
+                <option value=2>b</option>
+                <option value=3>c</option>
+                   <option value=4>d</option>
         </select>
         </label>
 
         </div>
 
-        <button class="task-form__btn">add</button>
+        <button type="submit" @click.prevent="console.log('a')" class="task-form__btn">add</button>
    </form>
 </template>
+<script setup lang="ts">
+import { useTasksStore } from '@/stores/task';
+import { ref } from 'vue';
+ const task= ref({
+
+ })
+const title = defineModel('title');
+const priority = defineModel('priority');
+const time = defineModel('time');
+const addCard =()=>{
+  alert("mox")
+}
+const taskStore= useTasksStore();
+taskStore
+
+</script>
 
 <style scoped>
 h3 {
