@@ -11,7 +11,7 @@ import AppMatrix from './components/AppMatrix.vue';
   </header>
 
   <main>
-     <AppForm msg="You did it!" />
+      <AppForm msg="You did it!" />
       <AppMatrix msg="You did it!" />
       <!-- <div class="wrapper"> -->
 

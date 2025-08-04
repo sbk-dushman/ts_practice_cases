@@ -1,12 +1,14 @@
 
 <template>
-   <form action@submit="addTask()" class="task-form">
+1S
+
+   <form action class="task-form">
     <h1 class="task-form__title">Новая задача {{title}} </h1>
-    <input v-model="title" placeholder="task" type="text" class="task-form__input-task">
+   <input v-model.title="title" placeholder="task" type="text" class="task-form__input-task">
 
         <div class="task-form__priority-time">
               <label for="task-form__input-time">  время {{time}}
-        <select v-model="time" class="task-form__input-time"  name="" id="task-form__input-time">
+        <select v-model.time="time" class="task-form__input-time"  name="" id="task-form__input-time">
           <option selected value=10>10мин</option>
           <option value=25>25мин</option>
           <option value=60>1ч</option>
@@ -14,7 +16,7 @@
         </select>
             </label>
           <label for="task-form__input-priority"> Группа {{ priority }}
-            <select v-model="priority" class="task-form__input-priority" name="" id="task-form__input-priority">
+            <select v-model.priority="priority" class="task-form__input-priority" name="" id="task-form__input-priority">
                 <option selected value=1>a</option>
                 <option value=2>b</option>
                 <option value=3>c</option>
@@ -24,14 +26,16 @@
 
         </div>
 
-        <button type="submit" @click.prevent="console.log('a')" class="task-form__btn">add</button>
+        <button type="submit" @click.prevent="addCard(task)" class="task-form__btn">add</button>
    </form>
 </template>
 <script setup lang="ts">
 import { useTasksStore } from '@/stores/task';
 import { ref } from 'vue';
  const task= ref({
-
+ title:'',
+ priority:1,
+ time:25
  })
 const title = defineModel('title');
 const priority = defineModel('priority');
