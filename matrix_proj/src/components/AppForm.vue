@@ -2,12 +2,12 @@
 <template>
 1S
 
-   <form @submit="" class="task-form">
+   <form  class="task-form">
     <h1 class="task-form__title">Новая задача {{newTask.title}} </h1>
-   <input v-model.title="newTask.title" placeholder="task" type="text" class="task-form__input-task">
+   <input v-model="newTask.title" placeholder="task" type="text" class="task-form__input-task">
 
         <div class="task-form__priority-time">
-              <label for="task-form__input-time">  время {{time}}
+              <label for="task-form__input-time">  время {{}}
         <select v-model="newTask.time" class="task-form__input-time"  name="" id="task-form__input-time">
           <option selected value=10>10мин</option>
           <option value=25>25мин</option>
@@ -26,49 +26,34 @@
 
         </div>
 
-        <button type="submit" @click.prevent="addCard()" class="task-form__btn">add</button>
+        <button type="submit" @click.prevent="addTask()" class="task-form__btn">add</button>
    </form>
 </template>
 <script setup lang="ts">
 import { useTasksStore } from '@/stores/task';
 import { ref } from 'vue';
-// const title = defineModel('title');
-// const priority = defineModel('priority');
-// const time = defineModel('time');
-// const taskStore= useTasksStore();
+const taskStore= useTasksStore();
 
-// прописать пропсы нормально
-// const props= defineProps({
-//   title:{
-//     type:String,
-
-//   },
-//     priority:{
-//       type:Number
-//   },
-//     time:{
-//     type:Number
-//   }
-// })
  const newTask= ref({
- title:'',
- priority:0,
- time:25
- })
-
-const addCard =()=>{
-  alert("mox")
-console.log(newTask.value);
-
-//  taskStore.addTask()
-
+      title:'some task',
+      priority:1,
+      time:25
+    }
+ )
+const addTask =()=>{
+  const taskToAdd = {
+    id: Date.now(),
+    title: newTask.value.title,
+    priority: newTask.value.priority,
+    time: newTask.value.time
+  };
+  taskStore.addTask(taskToAdd);
+  newTask.value = {
+    title: '',
+    priority: 1,
+    time: 25
+  };
 }
-
-
-
-
-
-
 </script>
 
 <style scoped>

@@ -4,16 +4,19 @@
 
 import { defineStore } from "pinia"
 import { ref } from "vue";
- export interface Task{
+ export interface Task {
+  id:number,
   title:string,
   time:number,
-  type:number,
+  priority:number,
 }
 
 // the first argument is a unique id of the store across your application
-export const useTasksStore = defineStore('task', ()=> {
+export const useTasksStore = defineStore('tasks', ()=> {
   const tasks= ref<Task[]>([]);
   function addTask(task:Task) {
+
+
     tasks.value.push(task);
 
   }
