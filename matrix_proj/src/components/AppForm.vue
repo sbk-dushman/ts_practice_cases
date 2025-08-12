@@ -1,13 +1,11 @@
 
 <template>
-1S
-
    <form  class="task-form">
     <h1 class="task-form__title">Новая задача {{newTask.title}} </h1>
    <input v-model="newTask.title" placeholder="task" type="text" class="task-form__input-task">
 
         <div class="task-form__priority-time">
-              <label for="task-form__input-time">  время {{}}
+              <label for="task-form__input-time">  время
         <select v-model="newTask.time" class="task-form__input-time"  name="" id="task-form__input-time">
           <option selected value=10>10мин</option>
           <option value=25>25мин</option>
@@ -15,7 +13,7 @@
           <option value=120>2ч</option>
         </select>
             </label>
-          <label for="task-form__input-priority"> Группа {{  }}
+          <label for="task-form__input-priority"> Группа
             <select v-model="newTask.priority" class="task-form__input-priority" name="" id="task-form__input-priority">
                 <option selected value=1>a</option>
                 <option value=2>b</option>
@@ -30,17 +28,20 @@
    </form>
 </template>
 <script setup lang="ts">
-import { useTasksStore } from '@/stores/task';
-import { ref } from 'vue';
+import { useTasksStore, type Task } from '@/stores/task';
+import { ref, type Ref } from 'vue';
 const taskStore= useTasksStore();
+ const newTask:Ref = ref({})
+ const newTaskTemplate:Task =  {
+    id:0,
+    title: 'Some Task',
+    priority: 1,
+    time: 25
+  };
+  newTask.value = newTaskTemplate;
 
- const newTask= ref({
-      title:'some task',
-      priority:1,
-      time:25
-    }
- )
-const addTask =()=>{
+const addTask = ()=>{
+
   const taskToAdd = {
     id: Date.now(),
     title: newTask.value.title,
@@ -48,11 +49,7 @@ const addTask =()=>{
     time: newTask.value.time
   };
   taskStore.addTask(taskToAdd);
-  newTask.value = {
-    title: '',
-    priority: 1,
-    time: 25
-  };
+  newTask.value = newTaskTemplate;
 }
 </script>
 
