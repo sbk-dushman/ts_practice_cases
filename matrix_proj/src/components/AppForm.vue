@@ -14,7 +14,7 @@
         </select>
             </label>
           <label for="task-form__input-priority"> Группа
-            <select v-model="newTask.priority" class="task-form__input-priority" name="" id="task-form__input-priority">
+            <select v-model.number="newTask.priority" class="task-form__input-priority" name="" id="task-form__input-priority">
                 <option selected value=1>a</option>
                 <option value=2>b</option>
                 <option value=3>c</option>

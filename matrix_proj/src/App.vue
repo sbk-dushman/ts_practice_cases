@@ -1,18 +1,21 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import AppForm from './components/AppForm.vue';
 import AppMatrix from './components/AppMatrix.vue';
-
+import { useTasksStore } from '@/stores/task';
+    const taskStore=  useTasksStore();
+const getGroupA = computed(() => taskStore.getGroup(8))
 </script>
 
 <template>
   <header>
-
+{{getGroupA}}
 
   </header>
 
   <main>
       <AppForm msg="You did it!" />
-      <AppMatrix msg="You did it!" />
+      <AppMatrix :msg=getGroupA />
       <!-- <div class="wrapper"> -->
 
     <!-- </div> -->

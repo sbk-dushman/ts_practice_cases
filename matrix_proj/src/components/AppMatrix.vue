@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 defineProps<{
-  msg: string
+  msg: Ref;
 }>()
 </script>
 

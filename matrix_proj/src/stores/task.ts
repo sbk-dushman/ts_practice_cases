@@ -15,10 +15,13 @@ import { ref } from "vue";
 export const useTasksStore = defineStore('tasks', ()=> {
   const tasks= ref<Task[]>([]);
   function addTask(task:Task) {
-
-
     tasks.value.push(task);
-
   }
-  return{ tasks,addTask}
+    function getGroup(someGroupe:number) {
+    tasks.value.find((word) => word.priority === someGroupe);
+
+
+    return tasks
+  }
+  return{ tasks,addTask,getGroup }
 });
