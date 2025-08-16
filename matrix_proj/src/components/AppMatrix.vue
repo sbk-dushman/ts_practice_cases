@@ -1,18 +1,23 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
+import type { Task } from '@/stores/task';
 
-defineProps<{
-  msg: Ref;
+const props = defineProps<{
+  groupA:Array<object>;
+  // groupB: Task | Array<object>;
+  // groupC: Task | Array<object>;
+  // groupD: Task | Array<object>;
 }>()
 </script>
 
 <template>
    <div class="matrix-container">
   <div class="group_a">
-
+    <!-- тута {{groupA[0].title}} -->
       <h3 class="group-title">group1</h3>
-      <ul class="task_list">
-        <li>TASK 1 G1</li>
+      <ul  class="task_list">
+         <li v-for="(value, key) in props.groupA" :key>
+{{ value }}
+        </li>
         <li>TASK 2 G1</li>
         <li>TASK 3 G1</li>
       </ul>

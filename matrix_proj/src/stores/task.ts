@@ -10,18 +10,15 @@ import { ref } from "vue";
   time:number,
   priority:number,
 }
-
-// the first argument is a unique id of the store across your application
 export const useTasksStore = defineStore('tasks', ()=> {
   const tasks= ref<Task[]>([]);
   function addTask(task:Task) {
     tasks.value.push(task);
   }
     function getGroup(someGroupe:number) {
-    tasks.value.find((word) => word.priority === someGroupe);
+    const group = tasks.value.filter((item) => item.priority === someGroupe);
 
-
-    return tasks
+    return group
   }
   return{ tasks,addTask,getGroup }
 });
