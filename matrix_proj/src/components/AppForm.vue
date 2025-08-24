@@ -41,9 +41,10 @@ const taskStore= useTasksStore();
   newTask.value = newTaskTemplate;
 
 const addTask = ()=>{
-
+const date = new Date();
   const taskToAdd = {
-    id: Date.now(),
+    id: date.getDate()  +
+    '/0' + (date.getMonth()+1) + ' ' + date.getHours() + ':' +  date.getMinutes(),
     title: newTask.value.title,
     priority: newTask.value.priority,
     time: newTask.value.time

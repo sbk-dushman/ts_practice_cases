@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Task } from '@/stores/task';
+// import type { Task } from '@/stores/task';
 
 const props = defineProps<{
   groupA:Array<object>;
@@ -12,20 +12,33 @@ const props = defineProps<{
 <template>
    <div class="matrix-container">
   <div class="group_a">
-    <!-- тута {{groupA[0].title}} -->
       <h3 class="group-title">group1</h3>
       <ul  class="task_list">
-         <li v-for="(value, key) in props.groupA" :key>
-{{ value }}
+         <li v-for="(group, key) in props.groupA" :key>
+          <div  :class=key>
+            <span  v-for="(value,index) in group" :key="index"   >
+        {{value}}
+          </span>
+        </div>
         </li>
-        <li>TASK 2 G1</li>
-        <li>TASK 3 G1</li>
+        <!-- <li>TASK 2 G1</li>
+        <li>TASK 3 G1</li> -->
       </ul>
   </div>
     <div class="group_b">
       <h3 class="group-title">group2</h3>
       <ul class="task_list">
-        <li>TASK 1 G1</li>
+        <li>
+
+          <div  class="task-card">
+            <span data-v-c2dce88c="">20/08 22:3</span>
+            <span class="task-card__title">
+              Some Task
+            </span>
+              <span  data-v-c2dce88c="">1</span>
+              <span class="task-card__time" data-v-c2dce88c="">25</span>
+            </div>
+        </li>
         <li>TASK 2 G1</li>
         <li>TASK 3 G1</li>
       </ul>
@@ -51,6 +64,23 @@ const props = defineProps<{
 </template>
 
 <style scoped>
+.task-card{
+ border:1px solid red;
+ display: flex
+}
+.task-card>  span{
+  /* display: block; */
+}
+.task-card__title{
+  text-transform: uppercase;
+  order: 0;
+  flex-basis: 1;
+  width: 100%;
+
+}
+.task-card__time{
+  order: 1;
+}
 .group_a::before, .group_b::before,.group_a::after,.group_c::before{
 font-size: 60px;
 position: absolute;

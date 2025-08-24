@@ -5,7 +5,7 @@
 import { defineStore } from "pinia"
 import { ref } from "vue";
  export interface Task {
-  id:number,
+  id:number| string,
   title:string,
   time:number,
   priority:number,
@@ -17,8 +17,13 @@ export const useTasksStore = defineStore('tasks', ()=> {
   }
     function getGroup(someGroupe:number) {
     const group = tasks.value.filter((item) => item.priority === someGroupe);
+      // to do
+      //убрать не нужные свойства
+      group.splice(3,1);
+      debugger;
+      console.log(group);
 
-    return group
+    return group;
   }
   return{ tasks,addTask,getGroup }
 });
