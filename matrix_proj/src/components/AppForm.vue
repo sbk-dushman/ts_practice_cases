@@ -1,12 +1,12 @@
 
 <template>
    <form  class="task-form">
-    <h1 class="task-form__title">Новая задача {{newTask.title}} </h1>
-   <input v-model="newTask.title" placeholder="task" type="text" class="task-form__input-task">
+    <h1 class="task-form__title">Новая задача {{newTask.base.title}} </h1>
+   <input v-model="newTask.base.title" placeholder="task" type="text" class="task-form__input-task">
 
         <div class="task-form__priority-time">
               <label for="task-form__input-time">  время
-        <select v-model="newTask.time" class="task-form__input-time"  name="" id="task-form__input-time">
+        <select v-model="newTask.base.time" class="task-form__input-time"  name="" id="task-form__input-time">
           <option selected value=10>10мин</option>
           <option value=25>25мин</option>
           <option value=60>1ч</option>
@@ -14,7 +14,7 @@
         </select>
             </label>
           <label for="task-form__input-priority"> Группа
-            <select v-model.number="newTask.priority" class="task-form__input-priority" name="" id="task-form__input-priority">
+            <select v-model.number="newTask.base.priority" class="task-form__input-priority" name="" id="task-form__input-priority">
                 <option selected value=1>a</option>
                 <option value=2>b</option>
                 <option value=3>c</option>
@@ -33,21 +33,36 @@ import { ref, type Ref } from 'vue';
 const taskStore= useTasksStore();
  const newTask:Ref = ref({})
  const newTaskTemplate:Task =  {
+   base: {
     id:0,
     title: 'Some Task',
-    priority: 1,
-    time: 25
-  };
+    time: 25,
+     priority: 1
+   },
+   public: {
+    id:0,
+    title: 'Some Task',
+    time: 25,
+   }
+ };
   newTask.value = newTaskTemplate;
 
 const addTask = ()=>{
 const date = new Date();
   const taskToAdd = {
+    base: {
     id: date.getDate()  +
     '/0' + (date.getMonth()+1) + ' ' + date.getHours() + ':' +  date.getMinutes(),
     title: newTask.value.title,
+    time: newTask.value.time,
     priority: newTask.value.priority,
-    time: newTask.value.time
+  },
+  public:{
+          id: date.getDate()  +
+         '/0' + (date.getMonth()+1) + ' ' + date.getHours() + ':' +  date.getMinutes(),
+        title: newTask.value.title,
+        time: newTask.value.time,
+  }
   };
   taskStore.addTask(taskToAdd);
   newTask.value = newTaskTemplate;
