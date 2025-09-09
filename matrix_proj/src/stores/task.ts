@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import {  ref,   } from "vue";
+import {  reactive,   } from "vue";
  export interface Task {
   // не нравиться эта реализация сделал так чтобы не выводить приоритет
   // потому как не нашёл решения как  удалить  priority на этапе вывода в шаблоне
@@ -19,14 +19,14 @@ base:{
 
 }
 export const useTasksStore = defineStore('tasks', ()=> {
-  const tasks= ref<Task[]>([]);
+  const tasks= reactive<Task[]>([]);
   function addTask(task:Task) {
-    tasks.value.push(task);
+    tasks.push(task);
   }
     function getGroup(someGroupe:number) {
-    const group = tasks.value.filter((item) => item.base.priority === someGroupe);
-
-      return group;
+    const group = tasks.filter((item) => item.base.priority === someGroupe);
+      const publicGroup = group.map(item => item.public);
+      return publicGroup;
 
   }
   return{ tasks,addTask,getGroup }
