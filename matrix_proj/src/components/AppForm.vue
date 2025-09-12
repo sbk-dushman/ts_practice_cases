@@ -32,33 +32,21 @@ import { useTasksStore, type Task } from '@/stores/task';
 import { reactive } from 'vue';
 const taskStore= useTasksStore();
 const newTask = reactive<Task>({
+  // смущает дубляж на  77 строке
   base: {
     id: 0,
-    title: '',
+    title: 'some task',
     time: 25,
     priority: 1
   },
   public: {
     id: 0,
-    title: '',
+    title: 'some task',
     time: 25
   }
 })
 
 const addTask = () => {
-  // function formatDate(date) {
-
-//  let dd = date.getDate();
-//   if (dd < 10) dd = '0' + dd;
-
-  // const mm = date.getMonth() + 1;
-  // if (mm < 10) mm = '0' + mm;
-
-  // const yy:number = date.getFullYear() % 100;
-  // if (yy < 10) yy = '0' + yy;
-
-  // return dd + '.' + mm + '.' + yy;
-  // }
 
   const date = new Date();
 const id = date.toLocaleString("ru", {
@@ -72,13 +60,9 @@ const id = date.toLocaleString("ru", {
   minute: 'numeric',
   second: 'numeric'
 });
-  // const dd= date.getDate() < 10 ?'0'+ date.getDate() : date.getDate();
-  // const mm = (date.getMonth() + 1 < 10) ? (date.getMonth() + 1)+'0'  : date.getMonth() + 1 ;
-  // const yy = (date.getFullYear() % 100  < 10) ? (date.getFullYear() % 100) + '0'  : date.getFullYear() % 100;
-  // const id = dd + '.' + mm + '.' + yy;
   const taskToAdd: Task = {
     base: {
-      id: id,
+      id:  Date.now(),
       title: newTask.base.title,
       time: newTask.base.time,
       priority: newTask.base.priority,
@@ -91,11 +75,11 @@ const id = date.toLocaleString("ru", {
   };
   taskStore.addTask(taskToAdd);
   newTask.base.id = 0;
-  newTask.base.title = '';
+  newTask.base.title = 'some task';
   newTask.base.time = 25;
   newTask.base.priority = 1;
   newTask.public.id = 0;
-  newTask.public.title = '';
+  newTask.public.title = 'some task';
   newTask.public.time = 25;
 
 }
@@ -111,14 +95,14 @@ h3 {
   display: flex;
   align-items:center;
   flex-direction: column;
-   text-transform: uppercase;
-   margin-top:40px;
+  text-transform: uppercase;
+  margin-top:40px;
 }
 [class^="task-form__input"]{
-margin-bottom: 10px;
- font-size: 24px;
- height: 40px;
- text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: 24px;
+  height: 40px;
+  text-transform: uppercase;
 }
 .task-form__title {
   font-weight: 500;

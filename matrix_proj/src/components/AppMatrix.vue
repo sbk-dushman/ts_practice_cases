@@ -3,9 +3,9 @@
 
 const props = defineProps<{
   groupA:Array<object>;
-  // groupB: Task | Array<object>;
-  // groupC: Task | Array<object>;
-  // groupD: Task | Array<object>;
+  groupB:Array<object>;
+  groupC:Array<object>;
+  groupD:Array<object>;
 }>()
 </script>
 
@@ -14,49 +14,59 @@ const props = defineProps<{
   <div class="group_a">
       <h3 class="group-title">group1</h3>
       <ul  class="task_list">
-         <li v-for="(group, key) in props.groupA" :key>
-          <div  :class=key>
-            <span  v-for="(value,index) in group" :key="index"   >
-        {{value}}
+        <!-- двойной цикл не нравится -->
+         <li v-for="(group, key) in props.groupA" :key class="task-card">
+            <span :class="[ index =='title'? 'task-card__title':'',
+                            index =='id'? 'task-card__date':'',
+                            index =='id'? 'task-card__date':'',
+                            index =='time'? 'task-card__time':'' ]"
+            v-for="(value,index) in group" :key="index"   >
+                  {{value}}
           </span>
-        </div>
         </li>
-        <!-- <li>TASK 2 G1</li>
-        <li>TASK 3 G1</li> -->
+
       </ul>
   </div>
     <div class="group_b">
       <h3 class="group-title">group2</h3>
       <ul class="task_list">
-        <li>
-
-          <div  class="task-card">
-            <span data-v-c2dce88c="">20/08 22:3</span>
-            <span class="task-card__title">
-              Some Task
-            </span>
-              <span  data-v-c2dce88c="">1</span>
-              <span class="task-card__time" data-v-c2dce88c="">25</span>
-            </div>
+            <li v-for="(group, key) in props.groupB" :key class="task-card">
+            <span :class="[ index =='title'? 'task-card__title':'',
+                            index =='id'? 'task-card__date':'',
+                            index =='id'? 'task-card__date':'',
+                            index =='time'? 'task-card__time':'' ]"
+            v-for="(value,index) in group" :key="index"   >
+                  {{value}}
+          </span>
         </li>
-        <li>TASK 2 G1</li>
-        <li>TASK 3 G1</li>
       </ul>
   </div>
     <div class="group_c">
       <h3 class="group-title">group3</h3>
       <ul class="task_list">
-        <li>TASK 1 G1</li>
-        <li>TASK 2 G1</li>
-        <li>TASK 3 G1</li>
+        <li v-for="(group, key) in props.groupC" :key class="task-card">
+            <span :class="[ index =='title'? 'task-card__title':'',
+                            index =='id'? 'task-card__date':'',
+                            index =='id'? 'task-card__date':'',
+                            index =='time'? 'task-card__time':'' ]"
+            v-for="(value,index) in group" :key="index"   >
+                  {{value}}
+          </span>
+        </li>
       </ul>
   </div>
     <div class="group_d">
       <h3 class="group-title">group4</h3>
       <ul class="task_list">
-        <li>TASK 1 G1</li>
-        <li>TASK 2 G1</li>
-        <li>TASK 3 G1</li>
+           <li v-for="(group, key) in props.groupD" :key class="task-card">
+            <span :class="[ index =='title'? 'task-card__title':'',
+                            index =='id'? 'task-card__date':'',
+                            index =='id'? 'task-card__date':'',
+                            index =='time'? 'task-card__time':'' ]"
+            v-for="(value,index) in group" :key="index"   >
+                  {{value}}
+          </span>
+        </li>
       </ul>
   </div>
 
@@ -66,20 +76,22 @@ const props = defineProps<{
 <style scoped>
 .task-card{
  border:1px solid red;
- display: flex
+ display: flex;
+ flex-direction:column;
+
 }
 .task-card>  span{
   /* display: block; */
 }
 .task-card__title{
   text-transform: uppercase;
-  order: 0;
+  order: -1;
   flex-basis: 1;
   width: 100%;
 
 }
 .task-card__time{
-  order: 1;
+  order: -1;
 }
 .group_a::before, .group_b::before,.group_a::after,.group_c::before{
 font-size: 60px;
