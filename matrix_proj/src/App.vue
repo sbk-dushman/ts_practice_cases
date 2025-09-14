@@ -12,7 +12,6 @@ const getGroupD = computed(() => taskStore.getGroup(4))
 
 <template>
   <header>
-{{getGroupA}}
 
   </header>
 

@@ -12,23 +12,23 @@ const props = defineProps<{
 <template>
    <div class="matrix-container">
   <div class="group_a">
-      <h3 class="group-title">group1</h3>
+      <h3 class="group-title">Делай!</h3>
       <ul  class="task_list">
-        <!-- двойной цикл не нравится -->
+        <!-- двойной цикл не нравится + повторяющаяся часть  -->
          <li v-for="(group, key) in props.groupA" :key class="task-card">
             <span :class="[ index =='title'? 'task-card__title':'',
                             index =='id'? 'task-card__date':'',
                             index =='id'? 'task-card__date':'',
                             index =='time'? 'task-card__time':'' ]"
             v-for="(value,index) in group" :key="index"   >
-                  {{value}}
+               {{  index =='time'? 'Прогноз времени':''  }}  {{ value }} {{  index =='time'? 'min':''  }}
           </span>
         </li>
 
       </ul>
   </div>
     <div class="group_b">
-      <h3 class="group-title">group2</h3>
+      <h3 class="group-title">Запланируй</h3>
       <ul class="task_list">
             <li v-for="(group, key) in props.groupB" :key class="task-card">
             <span :class="[ index =='title'? 'task-card__title':'',
@@ -36,13 +36,13 @@ const props = defineProps<{
                             index =='id'? 'task-card__date':'',
                             index =='time'? 'task-card__time':'' ]"
             v-for="(value,index) in group" :key="index"   >
-                  {{value}}
+               {{  index =='time'? 'Прогноз времени':''  }}  {{ value }} {{  index =='time'? 'min':''  }}
           </span>
         </li>
       </ul>
   </div>
     <div class="group_c">
-      <h3 class="group-title">group3</h3>
+      <h3 class="group-title"> Делегируй</h3>
       <ul class="task_list">
         <li v-for="(group, key) in props.groupC" :key class="task-card">
             <span :class="[ index =='title'? 'task-card__title':'',
@@ -50,13 +50,13 @@ const props = defineProps<{
                             index =='id'? 'task-card__date':'',
                             index =='time'? 'task-card__time':'' ]"
             v-for="(value,index) in group" :key="index"   >
-                  {{value}}
+                 {{  index =='time'? 'Прогноз времени':''  }}  {{ value }} {{  index =='time'? 'min':''  }}
           </span>
         </li>
       </ul>
   </div>
     <div class="group_d">
-      <h3 class="group-title">group4</h3>
+      <h3 class="group-title">Исключи</h3>
       <ul class="task_list">
            <li v-for="(group, key) in props.groupD" :key class="task-card">
             <span :class="[ index =='title'? 'task-card__title':'',
@@ -75,10 +75,16 @@ const props = defineProps<{
 
 <style scoped>
 .task-card{
- border:1px solid red;
+ border:10px solid #a7a1a1;
  display: flex;
  flex-direction:column;
-
+ /* background-color:#a7a1a1; */
+ margin-bottom:20px;
+ padding: 20px;
+ border-radius: 5%;
+ /* color: #000; */
+ font-size: 21px;
+ flex-wrap: wrap;
 }
 .task-card>  span{
   /* display: block; */
@@ -93,22 +99,27 @@ const props = defineProps<{
 .task-card__time{
   order: -1;
 }
+.group_a, .group_b,.group_с,.group_d{
+  overflow-y: scroll;
+  max-height: 250px;
+}
 .group_a::before, .group_b::before,.group_a::after,.group_c::before{
 font-size: 60px;
 position: absolute;
 text-transform:uppercase;
 }
+
 .group_a::before, .group_b::before{
   top: 20px;
 }
 .group_a::after, .group_c::before{
     transform: rotate(90deg);
-    top: 162px;
+    top: 198px;
     left: 138px;
 }
 .group_c[data-v-c2dce88c]::before {
     transform: rotate(90deg);
-    top: 455px;
+    top: 560px;
     left: 92px;
 }
 .group_a::before{
@@ -140,7 +151,7 @@ content:'Не важно';
 .task_list{
 min-width: 100%;
 min-height: 100%;
-  border: 1px solid brown;
+ border-radius: 5%;
   position: relative;
   font-size: 30px;
 }

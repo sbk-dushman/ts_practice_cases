@@ -19,7 +19,20 @@ base:{
 
 }
 export const useTasksStore = defineStore('tasks', ()=> {
-  const tasks= reactive<Task[]>([]);
+  const tasks= reactive<Task[]>([
+
+
+    {
+      "base":{"id":1757772257671,"title":"some task","time":25,"priority":1},
+      "public":{"id":"суббота, 13 сентября 2025 г. в 19:04:17","title":"some task","time":25}
+    },
+    {"base":{"id":1757772260364,"title":"some task","time":25,"priority":2},
+    "public":{"id":"суббота, 13 сентября 2025 г. в 19:04:20","title":"some task","time":25}},
+    {"base":{"id":1757772264718,"title":"some task","time":25,"priority":3},"public":{"id":"суббота, 13 сентября 2025 г. в 19:04:24","title":"some task","time":25}},
+    {"base":{"id":1757772267215,"title":"some task","time":25,"priority":4},"public":{"id":"суббота, 13 сентября 2025 г. в 19:04:27","title":"some task","time":25}}
+
+
+  ]);
   function addTask(task:Task) {
     tasks.push(task);
   }
