@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import AppForm from './components/AppForm.vue';
 import AppMatrix from './components/AppMatrix.vue';
+import AppTest from './components/AppTest.vue';
 import { useTasksStore } from '@/stores/task';
     const taskStore=  useTasksStore();
 const getGroupA = computed(() => taskStore.getGroup(1));
@@ -16,11 +17,12 @@ const getGroupD = computed(() => taskStore.getGroup(4))
   </header>
 
   <main>
-      <AppForm msg="You did it!" />
+  <AppTest/>
+      <!-- <AppForm msg="You did it!" />
       <AppMatrix  :groupA = getGroupA
                   :groupB = getGroupB
                   :groupC = "getGroupC"
-                  :groupD = "getGroupD" />
+                  :groupD = "getGroupD" /> -->
       <!-- <div class="wrapper"> -->
 
     <!-- </div> -->

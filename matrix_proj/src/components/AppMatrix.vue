@@ -1,12 +1,44 @@
 <script setup lang="ts">
-// import type { Task } from '@/stores/task';
+import { reactive } from 'vue';
 
+// import type { Task } from '@/stores/task';
+interface dragItem {
+  id: number;
+  name: string;
+}
 const props = defineProps<{
   groupA:Array<object>;
   groupB:Array<object>;
   groupC:Array<object>;
   groupD:Array<object>;
-}>()
+}>();
+ const dragItem:dragItem = reactive({ id: 1,name:'a' });
+
+
+function onDropList(targetList: string): void {
+  if (!dragItem) return;
+
+  let fromList: dragItem[], toList: dragItem[];
+
+  if (data.dragList === 'available' && targetList === 'selected') {
+    fromList = data.availableItems;
+    toList = data.selectedItems;
+  } else if (data.dragList === 'selected' && targetList === 'available') {
+    fromList = data.selectedItems;
+    toList = data.availableItems;
+  } else {
+    return; // Нельзя перенести в тот же список
+  }
+
+  const index = fromList.findIndex((item) => item.id === dragItem!.id);
+  if (index !== -1) {
+    const [movedItem] = fromList.splice(index, 1);
+    toList.push(movedItem);
+  }
+
+  // Очистить dragItem
+  // dragItem = null;
+}
 </script>
 
 <template>
@@ -43,8 +75,11 @@ const props = defineProps<{
   </div>
     <div class="group_c">
       <h3 class="group-title"> Делегируй</h3>
-      <ul class="task_list">
-        <li v-for="(group, key) in props.groupC" :key class="task-card">
+      <ul    @dragover.prevent
+         @drop="onDropList('available')">
+       class="task_list">
+
+        <li     draggable="true" v-for="(group, key) in props.groupC" :key class="task-card">
             <span :class="[ index =='title'? 'task-card__title':'',
                             index =='id'? 'task-card__date':'',
                             index =='id'? 'task-card__date':'',
