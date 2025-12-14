@@ -1,0 +1,18 @@
+<template>
+<main>
+ <AppHome/>
+</main>
+</template>
+<script setup lang="ts">
+import  AppHome from './companents/AppHome.vue';
+
+</script>
+<style scoped>
+  *{
+  padding: 0;
+  margin: 0;
+}
+ul{
+  list-style-type: none;
+}
+</style>
