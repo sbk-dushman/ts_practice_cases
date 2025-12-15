@@ -1,8 +1,16 @@
 <template>
-  <div class=" hide target"></div>
+<ul id="target-list">
+  <li :class="[state.hide ? 'hide' : '']" class=" target"></li>
+    <li :class="[state.hide ? 'hide' : '']" class=" target"></li>
+      <li :class="[state.hide ? 'hide' : '']" class=" target"></li>
+</ul>
 </template>
 <script setup lang="ts">
+import { reactive, ref } from 'vue';
 
+const state = ref({
+  hide:false,
+});
 
 </script>
 <style scoped>
