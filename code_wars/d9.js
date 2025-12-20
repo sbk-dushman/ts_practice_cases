@@ -5,11 +5,15 @@ function numberToString(num) {
     return num+="";
 }
 // numberToString(1);
-//2  начнал 18.12.12 https://www.codewars.com/kata/56b1f01c247c01db92000076/train/javascript
+//2  начнал 18.12.12 закончил https://www.codewars.com/kata/56b1f01c247c01db92000076/train/javascript
 function DoubleChar(char){
-  
-  console.log(char.split("").map((i)=>console.log(i)
-  ));
-  
+   let s='';
+  char.split("").map((i)=>{
+    s=s+i+i
+  });
+  return s;
 }
-DoubleChar('123456');
+DoubleChar('abcd');
+// todo
+// решение из каты разобрать 
+// const doubleChar = (str) => str.split("").map(c => c + c).join("");
