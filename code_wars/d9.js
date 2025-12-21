@@ -16,4 +16,8 @@ function DoubleChar(char){
 DoubleChar('abcd');
 // todo
 // решение из каты разобрать 
+split - делит строку на элементы массива
+map проходится по нему дублируя каждый элемент 
+получается массив с удойными символами 
+join- cоеденяет массив в одну строку
 // const doubleChar = (str) => str.split("").map(c => c + c).join("");
