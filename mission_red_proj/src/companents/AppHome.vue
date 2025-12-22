@@ -1,16 +1,23 @@
 <template>
-<ul id="target-list">
-  <li :class="[state.hide ? 'hide' : '']" class=" target"></li>
-    <li :class="[state.hide ? 'hide' : '']" class=" target"></li>
-      <li :class="[state.hide ? 'hide' : '']" class=" target"></li>
+<ul  id="target-list" >
+  <li v-for="target in targets"
+  @click="shoot(target.id)"
+  :class="[target.shooted ? 'hide' : '']"
+  class=" target"
+  :style="`position: top: ${target.position.y}; left: ${ target.position.x}};`"
+   :key="target.id"></li>
 </ul>
 </template>
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
+import { useTargetStore } from '@/stores/target';
+import { transform } from 'typescript';
+import { computed, reactive, ref } from 'vue';
+const targetsStore = useTargetStore()
+const targets= computed(()=>targetsStore.getTargets)
+const shoot = (id) => {
+  alert('mox' +id);
+};
 
-const state = ref({
-  hide:false,
-});
 
 </script>
 <style scoped>
@@ -21,9 +28,14 @@ const state = ref({
   background-color: #fff;
   border-radius: 90%;
   transform: scale(1);
-transition: 2s ease-in;
+  transition: 2s ease-in;
+  list-style-type:none ;
+  position: absolute;
 }
 .hide{
   transform: scale(0);
+}
+.target-list{
+  position: relative;
 }
   </style>

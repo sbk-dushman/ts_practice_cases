@@ -4,7 +4,10 @@
 </main>
 </template>
 <script setup lang="ts">
-import  AppHome from './companents/AppHome.vue';
+import  AppHome from '@/companents/AppHome.vue';
+import { useTargetStore } from './stores/target';
+useTargetStore
+const targetsStore = useTargetStore()
 
 </script>
 <style scoped>
