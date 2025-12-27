@@ -4,7 +4,7 @@
   @click="shoot(target.id)"
   :class="[target.shooted ? 'hide' : '']"
   class=" target"
-  :style="`position: top: ${target.position.y}; left: ${ target.position.x}};`"
+  :style="{ top:target.position.y +'px' ,  left:target.position.x +'px' }";
    :key="target.id"></li>
 </ul>
 </template>
