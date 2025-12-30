@@ -14,9 +14,13 @@ import { transform } from 'typescript';
 import { computed, reactive, ref } from 'vue';
 const targetsStore = useTargetStore()
 const targets= computed(()=>targetsStore.getTargets)
-const shoot = (id) => {
-  alert('mox' +id);
+const emit = defineEmits<{
+  (e: 'shoot', id: number): void;
+}>();
+const shoot = (id:number) => {
+   emit('shoot',id);
 };
+
 
 
 </script>
