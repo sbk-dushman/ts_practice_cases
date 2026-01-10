@@ -24,7 +24,7 @@ targetsStore.init(20,10,1200);
 }
 
 function onShooted(id:number) {
-  alert('пук '+ id )
+targetsStore.shooted(id);
 }
 </script>
 <style scoped>

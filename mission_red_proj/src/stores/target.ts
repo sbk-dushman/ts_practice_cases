@@ -2,7 +2,6 @@
 import { defineStore } from 'pinia'
 
 export const useTargetStore = defineStore('target', {
-
   state: () => {
     return {
       targerts: [] as Targets[] ,}
@@ -29,15 +28,15 @@ export const useTargetStore = defineStore('target', {
 
 
     },
+    shooted(id:number) {
+       const target = this.targerts.find(t => t.id === id)
+        if (target) {
+          target.shooted = true
+        } else {
+          console.warn(`Target with id ${id} not found`)
+        }
+    }
   },
 });
-interface Targets {
-  id: number
-  position:{
-    x:number,
-    y:number,
-  }
-  type:number
-  shooted:boolean
-}
+
 
