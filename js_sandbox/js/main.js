@@ -28,4 +28,24 @@ console.log(e.currentTarget);
     console.log ('container click');
  })
 
+/**
+ * @param {string} val
+ * @return {Object}
+ */
+
+https://leetcode.com/problems/to-be-or-not-to-be/?envType=study-plan-v2&envId=30-days-of-javascript
+// сonst expect = function(val) {
+
+// };
+
+
+
+
+function summIIFE(a) {
+    return function(b) {
+        return  a + b;
+    }
+}
+console.log(summIIFE(1)(2));
+
 
