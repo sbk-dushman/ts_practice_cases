@@ -49,3 +49,27 @@ function summIIFE(a) {
 console.log(summIIFE(1)(2));
 
 
+
+ const  createCounter = function(init) {
+        let base= init;
+        let current = init;
+    return{
+        increment(){
+            current = current + 1
+           return current;
+        },
+         reset(){
+            current = base;
+            return current;
+        },
+        decrement(){
+            current = current - 1
+           return current;
+        },
+    }
+};
+
+const counter = createCounter(5);
+counter.increment(); // 6
+counter.reset(); // 5
+counter.decrement(); // 4
