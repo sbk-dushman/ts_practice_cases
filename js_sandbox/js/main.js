@@ -73,3 +73,32 @@ const counter = createCounter(5);
 counter.increment(); // 6
 counter.reset(); // 5
 counter.decrement(); // 4
+
+
+
+// Binary-SEARCH
+const binarySearch = (list, item) => {
+    let low = 0;
+    let high = list.length-1;
+
+    while (low<=high) {
+
+        const mid = Math.floor( (low+high) / 2);
+        const guess = list[mid];
+       
+        console.log('предположение '+ guess );
+        
+        if( guess === item ){
+            return mid;
+        } else if(guess > item ){
+             high = mid- 1;
+        } else{
+            low = mid + 1;
+        
+        }
+    }
+      return false;
+}
+my_list = [1,2,3,5,7,9];
+ console.log('test 1 ' +binarySearch(my_list, 3));
+console.log('test 2' +binarySearch(my_list, -1));
