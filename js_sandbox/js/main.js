@@ -103,31 +103,58 @@
 //  console.log('test 1 ' +binarySearch(my_list, 3));
 // console.log('test 2' +binarySearch(my_list, -1));
 
-const nums = [2, 7, 11, 15, 3, 6];
-const target = 9;
-const sorted = [...nums].sort((a,b) => a-b); 
+// const nums = [2, 7, 11, 15, 3, 6];
+// const target = 9;
+// const sorted = [...nums].sort((a,b) => a-b); 
 
-const createCounter = ()=>{
-    let counter = 0;
-    return{
-        incriment(){
-           counter =  counter + 1  
-            return counter;
-        },
-        decrement(){
-          counter =  counter - 1  
-            return  counter;
-        },
-        getValue(){
-            return counter;
-        }
+// const createCounter = ()=>{
+//     let counter = 0;
+//     return{
+//         incriment(){
+//            counter =  counter + 1  
+//             return counter;
+//         },
+//         decrement(){
+//           counter =  counter - 1  
+//             return  counter;
+//         },
+//         getValue(){
+//             return counter;
+//         }
 
+//     }
+// }
+// const map = function(arr, fn) {
+//        let res = []
+//     arr.forEach((element,i) => {
+//         res.push(fn(element,i))
+//     });
+// return res;
+// };
+
+
+const findLeftBound = (nums, target)=>{
+    debugger;
+      let left = 0;
+    let right = nums.length - 1;
+    const mid = Math.floor((left + right)/2);
+    const gess = nums[mid];
+  while(left <= target){
+        const mid = Math.floor( ( left + right ) / 2);
+        const gess = nums[mid];
+        if (gess === target) {
+            return gess;
+        } else if(gess<  target) {
+            right =  mid -1;
+        } else {
+            left = mid + 1;
+        } 
+    }
+    if(  target>nums.length){
+        return nums.length+1; 
     }
 }
-const map = function(arr, fn) {
-       let res = []
-    arr.forEach((element,i) => {
-        res.push(fn(element,i))
-    });
-return res;
-};
+findLeftBound([1, 2, 2, 2, 3], 2)     // 1 (первое вхождение)
+//findLeftBound([1, 2, 2, 2, 3], 4)     // 5 (вставить в конец)
+//findLeftBound([1, 2, 2, 2, 3], 0)     // 0 (вставить в начало)
+//findLeftBound([1, 2, 3, 5, 6], 4)   
