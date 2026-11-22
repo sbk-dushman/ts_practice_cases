@@ -1,12 +1,12 @@
 
 <template>
    <form  class="task-form">
-  <h1 class="task-form__title">Новая задача {{ newTask.base.title }} </h1>
-  <input v-model="newTask.base.title" placeholder="task" type="text" class="task-form__input-task">
+  <h1 class="task-form__title">Новая задача {{ newTask.title }} </h1>
+  <input v-model="newTask.title" placeholder="task" type="text" class="task-form__input-task">
 
       <div class="task-form__priority-time">
             <label for="task-form__input-time">  время
-      <select v-model.number="newTask.base.time" class="task-form__input-time"  name="" id="task-form__input-time">
+      <select v-model.number="newTask.time" class="task-form__input-time"  name="" id="task-form__input-time">
         <option value=10>10мин</option>
         <option value=25>25мин</option>
         <option value=60>1ч</option>
@@ -14,7 +14,7 @@
       </select>
           </label>
         <label for="task-form__input-priority"> Группа
-          <select v-model.number="newTask.base.priority" class="task-form__input-priority" name="" id="task-form__input-priority">
+          <select v-model.number="newTask.priority" class="task-form__input-priority" name="" id="task-form__input-priority">
               <option value=1>a</option>
               <option value=2>b</option>
               <option value=3>c</option>
@@ -32,24 +32,16 @@ import { useTasksStore, type Task } from '@/stores/task';
 import { reactive } from 'vue';
 const taskStore= useTasksStore();
 const newTask = reactive<Task>({
-  // смущает дубляж на  77 строке
-  base: {
     id: 0,
     title: 'some task',
     time: 25,
     priority: 1
-  },
-  public: {
-    id: 0,
-    title: 'some task',
-    time: 25
-  }
 })
 
 const addTask = () => {
 
   const date = new Date();
-const id = date.toLocaleString("ru", {
+  const id = date.toLocaleString("ru", {
   // era: 'long',
   year: 'numeric',
   month: 'long',
@@ -61,26 +53,13 @@ const id = date.toLocaleString("ru", {
   second: 'numeric'
 });
   const taskToAdd: Task = {
-    base: {
-      id:  Date.now(),
-      title: newTask.base.title,
-      time: newTask.base.time,
-      priority: newTask.base.priority,
-    },
-    public: {
+
       id,
-      title: newTask.base.title,
-      time: newTask.base.time,
-    }
+      title: newTask.title,
+      time: newTask.time,
+      priority: newTask.priority,
   };
   taskStore.addTask(taskToAdd);
-  newTask.base.id = 0;
-  newTask.base.title = 'some task';
-  newTask.base.time = 25;
-  newTask.base.priority = 1;
-  newTask.public.id = 0;
-  newTask.public.title = 'some task';
-  newTask.public.time = 25;
 
 }
 </script>

@@ -1,44 +1,44 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+// import { reactive } from 'vue';
 
 // import type { Task } from '@/stores/task';
-interface dragItem {
-  id: number;
-  name: string;
-}
+// interface dragItem {
+//   id: number;
+//   name: string;
+// }
 const props = defineProps<{
   groupA:Array<object>;
   groupB:Array<object>;
   groupC:Array<object>;
   groupD:Array<object>;
 }>();
- const dragItem:dragItem = reactive({ id: 1,name:'a' });
+//  const dragItem:dragItem = reactive({ id: 1,name:'a' });
 
 
-function onDropList(targetList: string): void {
-  if (!dragItem) return;
+// function onDropList(targetList: string): void {
+//   if (!dragItem) return;
 
-  let fromList: dragItem[], toList: dragItem[];
+//   let fromList: dragItem[], toList: dragItem[];
 
-  if (data.dragList === 'available' && targetList === 'selected') {
-    fromList = data.availableItems;
-    toList = data.selectedItems;
-  } else if (data.dragList === 'selected' && targetList === 'available') {
-    fromList = data.selectedItems;
-    toList = data.availableItems;
-  } else {
-    return; // Нельзя перенести в тот же список
-  }
+//   if (data.dragList === 'available' && targetList === 'selected') {
+//     fromList = data.availableItems;
+//     toList = data.selectedItems;
+//   } else if (data.dragList === 'selected' && targetList === 'available') {
+//     fromList = data.selectedItems;
+//     toList = data.availableItems;
+//   } else {
+//     return; // Нельзя перенести в тот же список
+//   }
 
-  const index = fromList.findIndex((item) => item.id === dragItem!.id);
-  if (index !== -1) {
-    const [movedItem] = fromList.splice(index, 1);
-    toList.push(movedItem);
-  }
+//   const index = fromList.findIndex((item) => item.id === dragItem!.id);
+//   if (index !== -1) {
+//     const [movedItem] = fromList.splice(index, 1);
+//     toList.push(movedItem);
+//   }
 
-  // Очистить dragItem
-  // dragItem = null;
-}
+//   // Очистить dragItem
+//   // dragItem = null;
+// }
 </script>
 
 <template>
@@ -46,8 +46,14 @@ function onDropList(targetList: string): void {
   <div class="group_a">
       <h3 class="group-title">Делай!</h3>
       <ul  class="task_list">
+   <li v-for="(group, key) in props.groupA" :key class="task-card">
+          {{group}}
+
+
+        </li>
+
         <!-- двойной цикл не нравится + повторяющаяся часть  -->
-         <li v-for="(group, key) in props.groupA" :key class="task-card">
+         <!-- <li v-for="(group, key) in props.groupA" :key class="task-card">
             <span :class="[ index =='title'? 'task-card__title':'',
                             index =='id'? 'task-card__date':'',
                             index =='id'? 'task-card__date':'',
@@ -55,11 +61,11 @@ function onDropList(targetList: string): void {
             v-for="(value,index) in group" :key="index"   >
                {{  index =='time'? 'Прогноз времени':''  }}  {{ value }} {{  index =='time'? 'min':''  }}
           </span>
-        </li>
+        </li> -->
 
       </ul>
   </div>
-    <div class="group_b">
+    <!-- <div class="group_b">
       <h3 class="group-title">Запланируй</h3>
       <ul class="task_list">
             <li v-for="(group, key) in props.groupB" :key class="task-card">
@@ -103,7 +109,7 @@ function onDropList(targetList: string): void {
           </span>
         </li>
       </ul>
-  </div>
+  </div> -->
 
   </div>
 </template>
