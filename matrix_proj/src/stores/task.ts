@@ -25,7 +25,10 @@ export const useTasksStore = defineStore('tasks', ()=> {
   }
     function getGroup(someGroupe:number) {
     const group = tasks.filter((item) => item.priority === someGroupe);
-      return group;
+
+
+      // const publick= group.filter((item)=> item!="priority")
+    return group;
 
   }
   return{ tasks,addTask,getGroup }

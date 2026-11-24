@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Task } from '@/stores/task';
+
 // import { reactive } from 'vue';
 
 // import type { Task } from '@/stores/task';
@@ -7,10 +9,10 @@
 //   name: string;
 // }
 const props = defineProps<{
-  groupA:Array<object>;
-  groupB:Array<object>;
-  groupC:Array<object>;
-  groupD:Array<object>;
+  groupA:Array<Task>;
+  groupB:Array<Task>;
+  groupC:Array<Task>;
+  groupD:Array<Task>;
 }>();
 //  const dragItem:dragItem = reactive({ id: 1,name:'a' });
 
@@ -47,7 +49,6 @@ const props = defineProps<{
       <h3 class="group-title">Делай!</h3>
       <ul  class="task_list">
    <li v-for="(group, key) in props.groupA" :key class="task-card">
-          {{group}}
 
 
         </li>
@@ -65,34 +66,27 @@ const props = defineProps<{
 
       </ul>
   </div>
-    <!-- <div class="group_b">
+    <div class="group_b">
       <h3 class="group-title">Запланируй</h3>
       <ul class="task_list">
             <li v-for="(group, key) in props.groupB" :key class="task-card">
-            <span :class="[ index =='title'? 'task-card__title':'',
-                            index =='id'? 'task-card__date':'',
-                            index =='id'? 'task-card__date':'',
-                            index =='time'? 'task-card__time':'' ]"
-            v-for="(value,index) in group" :key="index"   >
-               {{  index =='time'? 'Прогноз времени':''  }}  {{ value }} {{  index =='time'? 'min':''  }}
-          </span>
+                   <span>
+      {{group.id}},
+     </span>
+        <span>
+         {{group.title}}
+     </span>
         </li>
       </ul>
   </div>
     <div class="group_c">
       <h3 class="group-title"> Делегируй</h3>
-      <ul    @dragover.prevent
-         @drop="onDropList('available')">
-       class="task_list">
+      <ul  class="task_list">
 
-        <li     draggable="true" v-for="(group, key) in props.groupC" :key class="task-card">
-            <span :class="[ index =='title'? 'task-card__title':'',
-                            index =='id'? 'task-card__date':'',
-                            index =='id'? 'task-card__date':'',
-                            index =='time'? 'task-card__time':'' ]"
-            v-for="(value,index) in group" :key="index"   >
-                 {{  index =='time'? 'Прогноз времени':''  }}  {{ value }} {{  index =='time'? 'min':''  }}
-          </span>
+        <li      v-for="(group, key) in props.groupC" :key class="task-card">
+                   <span>
+      {{group.id}},
+     </span>
         </li>
       </ul>
   </div>
@@ -100,16 +94,12 @@ const props = defineProps<{
       <h3 class="group-title">Исключи</h3>
       <ul class="task_list">
            <li v-for="(group, key) in props.groupD" :key class="task-card">
-            <span :class="[ index =='title'? 'task-card__title':'',
-                            index =='id'? 'task-card__date':'',
-                            index =='id'? 'task-card__date':'',
-                            index =='time'? 'task-card__time':'' ]"
-            v-for="(value,index) in group" :key="index"   >
-                  {{value}}
-          </span>
+                               <span>
+      {{group.id}},
+     </span>
         </li>
       </ul>
-  </div> -->
+  </div>
 
   </div>
 </template>
