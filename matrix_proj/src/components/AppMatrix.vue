@@ -49,20 +49,19 @@ const props = defineProps<{
       <h3 class="group-title">Делай!</h3>
       <ul  class="task_list">
    <li v-for="(group, key) in props.groupA" :key class="task-card">
-
+            <span class="task-card__title">
+          {{group.title}}
+     </span>
+          <span class="task-card__time"> >
+         {{group.time}}
+     </span>
+        <span class="task-card__date"> >
+         {{group.time}}
+     </span>
 
         </li>
 
-        <!-- двойной цикл не нравится + повторяющаяся часть  -->
-         <!-- <li v-for="(group, key) in props.groupA" :key class="task-card">
-            <span :class="[ index =='title'? 'task-card__title':'',
-                            index =='id'? 'task-card__date':'',
-                            index =='id'? 'task-card__date':'',
-                            index =='time'? 'task-card__time':'' ]"
-            v-for="(value,index) in group" :key="index"   >
-               {{  index =='time'? 'Прогноз времени':''  }}  {{ value }} {{  index =='time'? 'min':''  }}
-          </span>
-        </li> -->
+
 
       </ul>
   </div>
@@ -70,11 +69,14 @@ const props = defineProps<{
       <h3 class="group-title">Запланируй</h3>
       <ul class="task_list">
             <li v-for="(group, key) in props.groupB" :key class="task-card">
-                   <span>
-      {{group.id}},
+                    <span class="task-card__title">
+          {{group.title}}
      </span>
-        <span>
-         {{group.title}}
+          <span class="task-card__time">
+         {{group.time}}
+     </span>
+        <span class="task-card__date">
+         {{group.time}}
      </span>
         </li>
       </ul>
@@ -84,8 +86,14 @@ const props = defineProps<{
       <ul  class="task_list">
 
         <li      v-for="(group, key) in props.groupC" :key class="task-card">
-                   <span>
-      {{group.id}},
+                <span class="task-card__title">
+          {{group.title}}
+     </span>
+          <span class="task-card__time">
+         {{group.time}}
+     </span>
+        <span class="task-card__date">
+         {{group.time}}
      </span>
         </li>
       </ul>
@@ -94,8 +102,14 @@ const props = defineProps<{
       <h3 class="group-title">Исключи</h3>
       <ul class="task_list">
            <li v-for="(group, key) in props.groupD" :key class="task-card">
-                               <span>
-      {{group.id}},
+        <span class="task-card__title">
+          {{group.title}}
+     </span>
+          <span class="task-card__time">
+         {{group.time}}
+     </span>
+        <span class="task-card__date">
+         {{group.time}}
      </span>
         </li>
       </ul>

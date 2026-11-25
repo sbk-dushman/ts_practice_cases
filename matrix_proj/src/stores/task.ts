@@ -6,6 +6,7 @@ import {  reactive,   } from "vue";
     title:string,
     time:number,
     priority:number,
+    date:string
   }
 
 export const useTasksStore = defineStore('tasks', ()=> {
@@ -13,10 +14,10 @@ export const useTasksStore = defineStore('tasks', ()=> {
 
 
 
-      {"id":1757772257671,"title":"some task","time":25,"priority":1},
-    {"id":1757772260364,"title":"some task","time":25,"priority":2},
-    {"id":1757772264718,"title":"some task","time":25,"priority":3},
-    {"id":1757772267215,"title":"some task","time":25,"priority":4},
+    //   {"id":1757772257671,"title":"some task","time":25,"priority":1},
+    // {"id":1757772260364,"title":"some task","time":25,"priority":2},
+    // {"id":1757772264718,"title":"some task","time":25,"priority":3},
+    // {"id":1757772267215,"title":"some task","time":25,"priority":4},
 
 
   ]);

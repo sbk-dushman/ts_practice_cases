@@ -35,7 +35,8 @@ const newTask = reactive<Task>({
     id: 0,
     title: 'some task',
     time: 25,
-    priority: 1
+    priority: 1,
+    date:'25/11/26'
 })
 
 const addTask = () => {
@@ -58,6 +59,9 @@ const addTask = () => {
       title: newTask.title,
       time: newTask.time,
       priority: newTask.priority,
+      date:id
+
+
   };
   taskStore.addTask(taskToAdd);
 
